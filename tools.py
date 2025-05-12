@@ -1,4 +1,3 @@
-from run_query import DAO
 from sqlalchemy.orm import Session
 from db import SessionLocal
 from langchain.tools import tool
