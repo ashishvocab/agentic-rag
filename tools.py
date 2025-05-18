@@ -14,9 +14,11 @@ def get_user_info_by_name(username: str) -> str:
     try:
         db = SessionLocal()
         result = db.execute(query, {"username": username})
-        rows = result.fetchall()
-        formatted = "\n".join(str(row) for row in rows)
-        return formatted if formatted else "No user found with that name."
+        rows = result.mappings().all()  # get dict-like rows
+        if not rows:
+            return "No user found with that name."
+        formatted = "\n".join(str(dict(row)) for row in rows)  # convert each row to dict and then str
+        return formatted
     except Exception as e:
         return f"Error: {e}"
     finally:

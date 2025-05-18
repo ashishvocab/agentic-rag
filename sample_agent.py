@@ -10,8 +10,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 import google.generativeai as genai
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-genai.configure(api_key="AIzaSyCaETU_k9jariRsRb38e4n37gF0FTjrBSY")
+load_dotenv()
+
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def load_and_chunk_pdf(pdf_path):
   """Load PDF and split into text chunks."""

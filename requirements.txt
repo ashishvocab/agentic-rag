@@ -6,3 +6,5 @@ langchain-community
 google-generativeai
 pypdf
 langgraph
+python-dotenv
+psycopg2-binary
